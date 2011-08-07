@@ -75,7 +75,7 @@ class Soundcloud
   def exchange_token(options={})
     store_options(options)
     raise ArgumentError, 'client_id and client_secret is required to retrieve an access_token' if client_id.nil? || client_secret.nil?
-    client_params = {:client_id => client_id, :client_secret => client_secret}
+    client_params = {:client_id => client_id, :client_secret => client_secret, :scope => "non-expiring"}
     params = if options_for_refresh_flow_present?
       {:grant_type => 'refresh_token',      :refresh_token => refresh_token}
     elsif options_for_credentials_flow_present?
